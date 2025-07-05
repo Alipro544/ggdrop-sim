@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>GGDROP Sim</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #121212;
+            color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #00ffcc;
+        }
+        .case {
+            background-color: #1e1e1e;
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 8px;
+            width: 300px;
+            border: 1px solid #444;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #00ffcc;
+            color: #000;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .skin {
+            margin-top: 10px;
+        }
+        img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎁 GGDROP Симулятор</h1>
+    <p>Открывай кейсы, получай скины — симулятор без доната 😎</p>
+
+    <div class="case">
+        <h2>Budget Kase</h2>
+        <button onclick="openCase('budget')">Открыть</button>
+        <div id="budget-result" class="skin"></div>
+    </div>
+
+    <div class="case">
+        <h2>Luksury Kase</h2>
+        <button onclick="openCase('luksury')">Открыть</button>
+        <div id="luksury-result" class="skin"></div>
+    </div>
+
+    <div class="case">
+        <h2>WILD Kase</h2>
+        <button onclick="openCase('wild')">Открыть</button>
+        <div id="wild-result" class="skin"></div>
+    </div>
+
+    <script>
+        const cases = {
+            budget: [
+                { name: "P250 | Noice", price: "$0.25", img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_p250_cu_p250_contour_light_large.4b10eafac2719f81ad9bebb875ee6bb5c349c969.png" },
+                { name: "MAC-10 | Classic", price: "$0.15", img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_mac10_cu_mac10_classic_light_large.a87282b047c2cb1a64a1c517b946c9c11fd1f1d7.png" }
+            ],
+            luksury: [
+                { name: "AK-47 | Neon Glow", price: "$5.00", img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_ak47_cu_ak47_neon_light_large.3d7e6f72eb9867d2f50b3f05a6438b3ce3f7e962.png" },
+                { name: "AWP | Dragon Lore", price: "$10.00", img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_awp_cu_awp_dragon_light_large.234023abc72713d42bc401f9f4d86c3f7e4d0f55.png" }
+            ],
+            wild: [
+                { name: "Karambit | Fad", price: "$100.00", img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_karambit_am_karambit_fade_light_large.aabd8c477b3b87023cb2b5ce2b77b4d3c6a4db5c.png" },
+                { name: "M9 Bayonet | Gamma", price: "$80.00", img: "https://steamcdn-a.akamaihd.net/apps/730/icons/econ/default_generated/weapon_knife_m9_bayonet_am_gamma_doppler_phase1_light_large.132c54adbd9f1e3a24d02e3e91e7c4ae411579c5.png" }
+            ]
+        };
+
+        function openCase(caseType) {
+            const skins = cases[caseType];
+            const chosen = skins[Math.floor(Math.random() * skins.length)];
+            const resultDiv = document.getElementById(caseType + "-result");
+            resultDiv.innerHTML = `
+                <h3>${chosen.name}</h3>
+                <img src="${chosen.img}" alt="${chosen.name}">
+                <p>Цена: ${chosen.price}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
